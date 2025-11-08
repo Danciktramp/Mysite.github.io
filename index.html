@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My site</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+</head>
+<body>
+    <div class="topmenu" style="background-color: red;" >
+        <button class="w3-button w3-red w3-xlarge w3-red" onclick="w3_open()" id="menubt" >☰</button>
+        <div style="flex-grow: 1; margin-left: 10px; text-align: center; margin-right: 30px;">My site</div>
+        <div style="flex-grow: 1;" class="w3-button w3-hover-aqua">Introduction</div>
+        <div style="flex-grow: 1;" class="w3-button w3-hover-aqua">My Projects</div>
+            <div class="w3-dropdown-hover">     
+                <button style="flex-grow: 1;" class="w3-button w3-hover-aqua" >Help me</button>
+                <div class="w3-dropdown-content w3-bar-block w3-border w3-red"> 
+                    <p>Please support me and send an advice by clicking on button</p>
+                    <button><a href="mailto:bolozandan@gmail.com">+ </a></button>
+                </div>
+            </div>
+        <div class="w3-sidebar w3-bar-block w3-border-right w3-red" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large w3-crimson w3-hover-aqua">Close &times;</button>
+  <a href="https://www.w3schools.com/js/js_scope.asp" class="w3-bar-item w3-button w3-red w3-hover-aqua">Link 1</a>
+  <a href="https://www.w3schools.com/js/js_scope.asp" class="w3-bar-item w3-button w3-red w3-hover-aqua">Link 2</a>
+  <a href="#intr" class="w3-bar-item w3-button w3-red w3-hover-aqua">Jump to introduction</a>
+        </div>
+        
+    </div>
+    <div class="imgmenu" class="w3-display-container">
+        <img src="topcarimg.jpg" id="topcar">
+        <p class="w3-padding w3-display-middle" class="intro">This is a site created especialy about my career </p>
+    </div>
+    <div class="w3-display-container">
+        <h2 id="intr" style="font-size: 80px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Introduction</h2>
+        <p id="contintr">
+            Hey there! I'm Dancik, a 17-year-old student diving deep into the world of technology at ULIM
+             (Free International University of Moldova). This isn't just a blog; it's a window into my life,
+              charting the path from late-night coding sessions to ambitious professional dreams.<br>
+            This is My Digital Workshop: Tracking a Programmer's Journey
+This site is dedicated entirely to my life in code. Think of it as a living portfolio, a digital notebook, and a reflection space all rolled into one. Here, I will be consistently posting content revolving around the theme of my programming life:
+
+Code Conquests: Showcasing the projects I'm building, the frameworks I'm learning (like Node.js, React, or Python), and the technical challenges I'm currently solving.
+
+Student Life & ULIM Insights: Sharing my experiences, coursework, and major takeaways from my studies at ULIM.
+
+Goals and Growth: Documenting my progress toward those ambitious professional dreams, from mastering new languages to preparing for internships.
+
+The Daily Grind: Offering a behind-the-scenes look at the realities of being a young developer—the breakthroughs, the debugging frustrations, and the continuous learning process.
+        </p>
+    </div>
+
+
+
+
+
+    <script src="js.js"></script>
+</body>
+</html>
