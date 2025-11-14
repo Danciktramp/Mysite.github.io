@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <title>Spy</title>
+    <style>
+
+        body{
+            background-color: black;
+        }
+        #mid{
+            background-color: red;
+            width: 35vw;
+            height: 20vw;
+            margin-top: 10vw;
+            margin-bottom: auto;
+            margin-left: 30%;
+            
+        }
+    </style>
+</head>
+<body>
+    <button class="w3-button w3-dark-grey" style="display: none;" id="menubutton" onclick="openmen()">☰</button>
+ <div id="mid" class="w3-display-container">
+    <button class="w3-display-middle w3-button w3-round-large" style="font-size: 200%;" id="midbt" onclick="remMid()"> Start Game</button>
+    
+ </div>
+ <script>
+    function remMid(){
+        document.getElementById("mid").style.display = "none";
+        document.getElementById('menubutton').style.display="block"
+}
+ function openmen(){
+    document.getElementById("mid").style.display = "block";
+        document.getElementById('menubutton').style.display="none"
+ }
+ </script>
+</body>
+</html>
