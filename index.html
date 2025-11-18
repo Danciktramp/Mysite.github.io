@@ -3,62 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My site</title>
+    <title>To-Do-List</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 </head>
 <body>
-    <div class="topmenu" style="background-color: red;" >
-        <button class="w3-button w3-red w3-xlarge w3-red" onclick="w3_open()" id="menubt" >☰</button>
-        <div style="flex-grow: 1; margin-left: 10vw; text-align: center; margin-right: 10vw;">My site</div>
-        <div style="flex-grow: 1;" class="w3-button w3-hover-aqua">Introduction</div>
-        <div style="flex-grow: 1;" class="w3-button w3-hover-aqua">My Projects</div>
-            <div class="w3-dropdown-hover">     
-                <button style="flex-grow: 1;" class="w3-button w3-hover-aqua" >Help me</button>
-                <div class="w3-dropdown-content w3-bar-block w3-border w3-red"> 
-                    <p>Please support me and send an advice by clicking on button</p>
-                    <button><a href="mailto:bolozandan@gmail.com">+ </a></button>
-                </div>
-            </div>
-        <div class="w3-sidebar w3-bar-block w3-border-right w3-red" style="display:none" id="mySidebar">
-  <button onclick="w3_close()" class="w3-bar-item w3-large w3-crimson w3-hover-aqua">Close &times;</button>
-  <a href="https://www.w3schools.com/js/js_scope.asp" class="w3-bar-item w3-button w3-red w3-hover-aqua">Link 1</a>
-  <a href="https://www.w3schools.com/js/js_scope.asp" class="w3-bar-item w3-button w3-red w3-hover-aqua">Link 2</a>
-  <a href="#intr" class="w3-bar-item w3-button w3-red w3-hover-aqua">Jump to introduction</a>
-        </div>
-        
-    </div>
-    <div class="imgmenu" class="w3-display-container">
-        <img src="topcarimg.jpg" id="topcar">
-        <p class="w3-padding w3-display-middle" class="intro">This is a site created especialy about my career </p>
+    <div class="w3-display-container w3-orange" >
+        <h1 class="">To-Do-List</h1>
+        <button class="w3-display-right w3-hover-green" style="margin-right: 3%; font-size: 140%;" id="addbt">Add</button>
+        <button id="clearbt" class="w3-display-left w3-hover-green" style="margin-left: 3% ;font-size: 140%;">Clear All</button>
+        <button id="helpbt" class="w3-display-left w3-hover-green" style="margin-left: 20%; font-size: 140%;">Neclarities</button>
     </div>
     <div class="w3-display-container">
-        <h2 id="intr" style="font-size: 5vw; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Introduction</h2>
-        <p id="contintr">
-            Hey there! I'm Dancik, a 17-year-old student diving deep into the world of technology at ULIM
-             (Free International University of Moldova). This isn't just a blog; it's a window into my life,
-              charting the path from late-night coding sessions to ambitious professional dreams.<br>
-            This is My Digital Workshop: Tracking a Programmer's Journey
-This site is dedicated entirely to my life in code. Think of it as a living portfolio, a digital notebook, and a reflection space all rolled into one. Here, I will be consistently posting content revolving around the theme of my programming life:
+        <ol id="notebox">
+        </ol>
 
-Code Conquests: Showcasing the projects I'm building, the frameworks I'm learning (like Node.js, React, or Python), and the technical challenges I'm currently solving.
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addBtn = document.getElementById("addbt");
+            const clearBtn = document.getElementById("clearbt");
+            const noteBox = document.getElementById("notebox");
 
-Student Life & ULIM Insights: Sharing my experiences, coursework, and major takeaways from my studies at ULIM.
+            function addNote() {
+                const newInput = document.createElement('input');
+                newInput.type = 'text';
+                newInput.placeholder = 'New task...';
+                // Make the input occupy the full width of its container
+                newInput.style.width = '100%';
+                newInput.style.boxSizing = 'border-box';
+                newInput.style.padding = '8px';
+                newInput.style.fontSize = '1rem';
 
-Goals and Growth: Documenting my progress toward those ambitious professional dreams, from mastering new languages to preparing for internships.
+                const li = document.createElement('li');
+                // Ensure list item doesn't add unexpected padding/margins
+                li.style.padding = '0.25rem 0';
+                // Hint for users
+                li.title = 'Double-click this item to delete it (will cross out first)';
 
-The Daily Grind: Offering a behind-the-scenes look at the realities of being a young developer—the breakthroughs, the debugging frustrations, and the continuous learning process.
-        </p>
-    </div>
+                // Add a small transition for the deletion animation
+                li.style.transition = 'color 0.15s ease, opacity 0.3s ease, transform 0.2s ease';
 
-<div class="spy ; w3-button w3-hover-black" >
-    <h1 style="text-align: center; padding-top: 10%; font-size: 15vw;">Spy</h1>
-   <a href="spy.html" target="_blank"> <img src="Spyimg.png"  id="spy"></a>
-</div>
+                // Delete the note on double-click with visual feedback:
+                // cross out the text and change color to red, then remove the element.
+                li.addEventListener('dblclick', () => {
+                    // Apply visual delete state
+                    li.style.color = 'red';
+                    li.style.textDecoration = 'line-through';
+                    li.style.opacity = '0.6';
+                    li.style.transform = 'translateX(6px)';
 
+                    // Remove after a short delay so the user sees the change
+                    setTimeout(() => {
+                        if (li.parentNode) li.parentNode.removeChild(li);
+                    }, 420);
+                });
 
+                li.appendChild(newInput);
+                noteBox.appendChild(li);
+                newInput.focus();
+            }
 
+            function clearAll() {
+                noteBox.innerHTML = '';
+            }
 
-    <script src="js.js"></script>
+            if (addBtn) addBtn.addEventListener('click', addNote);
+            if (clearBtn) clearBtn.addEventListener('click', clearAll);
+
+            // Help button: show a short usage tip
+            const helpBtn = document.getElementById('helpbt');
+            function showHelp() {
+                window.alert('Tip: to save a note, tap outside the input field. ' + 
+                'To deleat just a note doubletap');
+            }
+            if (helpBtn) helpBtn.addEventListener('click', showHelp);
+        });
+        
+        </script>
 </body>
 </html>
